@@ -68,7 +68,7 @@ private class PMKMessageComposeViewControllerDelegate: NSObject, MFMessageCompos
 
         switch result {
         case .sent:
-            seal.fulfill()
+            seal.fulfill(())
         case .failed:
             seal.reject(MFMessageComposeViewController.PMKError.failed)
         case .cancelled:
