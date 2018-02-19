@@ -13,9 +13,9 @@ matrix:
 cache:
   directories:
   - Carthage
+before_install:
+  - carthage bootstrap --cache-builds --no-use-binaries --platform iOS --verbose
 install:
-  - carthage bootstrap --cache-builds --no-use-binaries --platform iOS
+  - xcodebuild -scheme PMKMessagesUI -quiet -destination "$DST" SWIFT_VERSION=$SWFT build-for-testing
 script:
-  - set -o pipefail
-  - xcodebuild -scheme PMKMessagesUI -quiet -destination "$DST" build SWIFT_VERSION=$SWFT
   - xcodebuild -scheme PMKMessagesUI -quiet -destination "$DST" test
